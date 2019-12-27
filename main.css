@@ -56,7 +56,7 @@ body {
   height: 64px;
   display: inline-block;
   background: url(img/explosion.png);
-  animation: explosion 2s steps(14) infinite;
+  animation: explosion 0.5s steps(14) 1;
 }
 @keyframes explosion {
   from {
@@ -65,4 +65,10 @@ body {
   to {
     background-position: -896px;
   }
+}
+
+.enemy {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
 }

@@ -3,6 +3,7 @@ let bullets = document.querySelectorAll(".bullet");
 let plane = document.querySelector(".plane");
 let monsters = document.querySelectorAll(".enemy");
 
+// PC 拖动
 plane.addEventListener("mousedown", event => {
   let shiftX = event.clientX - plane.offsetLeft;
   let shiftY = event.clientY - plane.offsetTop;
@@ -20,8 +21,20 @@ plane.addEventListener("mousedown", event => {
     document.removeEventListener("mouseup", handleStop);
   }
 });
-
 plane.ondragstart = () => false;
+
+// 移动端拖动
+plane.addEventListener("touchstart", event => {
+  const touch = event.touches[0];
+  const shiftX = touch.clientX - plane.offsetLeft;
+  const shiftY = touch.clientY - plane.offsetTop;
+
+  plane.addEventListener("touchmove", event => {
+    const touch = event.touches[0];
+    plane.style.left = touch.pageX - shiftX + "px";
+    plane.style.top = touch.pageY - shiftY + "px";
+  });
+});
 
 function prepareBullet() {
   for (let bullet of bullets) {
@@ -44,8 +57,20 @@ function letBulletsFly() {
 
   for (let monster of monsters)
     for (let bullet of bullets) {
-      // if()
+      if (checkIntersect(monster, bullet) && !monster.querySelector(".boom")) {
+        let boom = document.createElement("span");
+        boom.classList.add("boom");
+        monster.append(boom);
+        boom.addEventListener("animationend", () => removeDiedMonster(monster));
+      }
     }
+}
+
+function removeDiedMonster(monster) {
+  // monster.innerHTML = "";
+  monster.style.top = _.random(-500, -monster.offsetHeight) + "px";
+  monster.style.left =
+    _.random(0, game.offsetWidth - monster.offsetWidth) + "px";
 }
 
 setInterval(letBulletsFly, 10);
