@@ -1,0 +1,68 @@
+body {
+  margin: 0;
+}
+
+.game {
+  background: url(img/bg.png);
+  height: 100vh;
+  position: relative;
+  animation: sky 4s linear infinite;
+}
+
+@keyframes sky {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 0 512px;
+  }
+}
+
+.plane {
+  width: 60px;
+  height: 76px;
+  background: url(img/plane.png);
+  position: absolute;
+  top: calc(100vh - 150px);
+  left: calc(50vw - 30px);
+}
+
+.bullet {
+  width: 4px;
+  height: 10px;
+  background: url(img/yellow_bullet.png);
+  position: absolute;
+  top: -10px;
+}
+
+.monster {
+  width: 62px;
+  height: 90px;
+  background: url(img/big.png);
+  position: absolute;
+  top: -100px;
+}
+
+.umbrella {
+  width: 37px;
+  height: 59px;
+  background: url(img/bullet_award.png);
+  position: absolute;
+  top: -50px;
+}
+
+.boom {
+  width: 64px;
+  height: 64px;
+  display: inline-block;
+  background: url(img/explosion.png);
+  animation: explosion 2s steps(14) infinite;
+}
+@keyframes explosion {
+  from {
+    background-position: 0px;
+  }
+  to {
+    background-position: -896px;
+  }
+}
