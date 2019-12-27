@@ -44,7 +44,7 @@ function letBulletsFly() {
 
   for (let monster of monsters)
     for (let bullet of bullets) {
-      if()
+      // if()
     }
 }
 
