@@ -46,7 +46,7 @@ body {
 .umbrella {
   width: 37px;
   height: 59px;
-  background: url(img/bullet_award.png);
+  background-image: url(img/bullet_award.png);
   position: absolute;
   top: -50px;
 }
