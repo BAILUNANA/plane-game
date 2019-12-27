@@ -67,7 +67,7 @@ function letBulletsFly() {
 }
 
 function removeDiedMonster(monster) {
-  // monster.innerHTML = "";
+  monster.innerHTML = "";
   monster.style.top = _.random(-500, -monster.offsetHeight) + "px";
   monster.style.left =
     _.random(0, game.offsetWidth - monster.offsetWidth) + "px";
